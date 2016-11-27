@@ -1,0 +1,11 @@
+# NetBeans #
+nbproject/private/
+build/
+/target/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+*/target/**
+
+.idea/

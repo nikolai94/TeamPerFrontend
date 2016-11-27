@@ -1,1 +1,5 @@
+Rest\User.class
 dk\cphbusiness\teamperfrontend\testMock.class
+Rest\Admin.class
+Rest\ApplicationConfig.class
+Rest\Test.class
