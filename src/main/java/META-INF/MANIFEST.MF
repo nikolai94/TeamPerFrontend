@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Class-Path: MogPerContract-1.0-20161107.111307-4.jar
+

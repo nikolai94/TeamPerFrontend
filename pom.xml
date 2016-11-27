@@ -65,15 +65,15 @@
             </plugin>
         </plugins>
     </build>
-   <distributionManagement>
-    <repository>
-        <id>artifactory</id>
-        <name>artifactory-releases</name>
-        <url>http://46.101.252.236:8082/artifactory/libs-release-local</url>
-    </repository>
-   </distributionManagement>
+    <distributionManagement>
+        <repository>
+            <id>artifactory</id>
+            <name>artifactory-releases</name>
+            <url>http://46.101.252.236:8082/artifactory/libs-release-local</url>
+        </repository>
+    </distributionManagement>
    
-   <repositories>
+    <repositories>
         <repository>
             <id>MogPerContract</id>
             <name>MogPer Repo</name>
@@ -99,7 +99,7 @@
 
      
 
-                <dependency>
+        <dependency>
             <groupId>com.mogper</groupId>
             <artifactId>MogPerContract</artifactId>
             <version>1.0-20161107.111307-4</version>
@@ -107,13 +107,13 @@
             <type>test-jar</type>
         </dependency>
 
-<!--        <dependency>
-            <groupId>com.mogper</groupId>
-            <artifactId>MogPerContract</artifactId>
-            <version>1.0-20161026.132927-3</version>
-            <classifier>tests</classifier>
-        </dependency>
--->
+        <!--        <dependency>
+                    <groupId>com.mogper</groupId>
+                    <artifactId>MogPerContract</artifactId>
+                    <version>1.0-20161026.132927-3</version>
+                    <classifier>tests</classifier>
+                </dependency>
+        -->
         <dependency>
             <groupId>org.jmock</groupId>
             <artifactId>jmock-junit4</artifactId>
