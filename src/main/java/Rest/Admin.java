@@ -138,6 +138,7 @@ public class Admin {
         return toJson;
     }
     
+    //json format e.g = {"departureId": "1", "departureTime": "2016-11-30 12:30","routeSummary" : {"travelTime": "30", "harbourOrigin":"Tortoise Shell Harbor", "harbourDestination": "Oakland Harbor", "routeId": "0" }}  
     @PUT
     @Path("updateDeparture")
     @Produces("application/json")
