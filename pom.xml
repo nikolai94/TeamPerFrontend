@@ -69,15 +69,14 @@
         <repository>
             <id>artifactory</id>
             <name>artifactory-releases</name>
-            <url>http://46.101.252.236:8082/artifactory/libs-release-local</url>
+            <url>https://artifactory-webzite.rhcloud.com/artifactory/libs-release-local</url>
         </repository>
     </distributionManagement>
-   
     <repositories>
         <repository>
             <id>MogPerContract</id>
             <name>MogPer Repo</name>
-            <url>http://46.101.252.236:8082/artifactory/libs-snapshot-local</url>
+            <url>https://artifactory-webzite.rhcloud.com/artifactory/libs-snapshot-local</url>
         </repository>
     </repositories>
 
@@ -97,23 +96,20 @@
         <dependency>
             <groupId>com.mogper</groupId>
             <artifactId>MogPerContract</artifactId>
-            <version>1.0-20161116.142233-2</version>
+            <version>1.0-20161210.073727-4</version>
         </dependency>
-
-        <dependency>
-            <groupId>com.mogper</groupId>
-            <artifactId>TeamPerBackendDummy</artifactId>
-            <version>1.0-20161129.205443-1</version>
-        </dependency>
-
         <dependency>
             <groupId>com.mogper</groupId>
             <artifactId>MogPerContract</artifactId>
-            <version>1.0-20161116.142233-2</version>
-            <scope>test</scope>
+            <version>1.0-20161210.073727-4</version>
+            <classifier>tests</classifier>
             <type>test-jar</type>
         </dependency>
-
+        <dependency>
+            <groupId>com.mogper</groupId>
+            <artifactId>TeamPerBackendDummy</artifactId>
+            <version>1.0-20161210.112556-6</version>
+        </dependency>
         <!--        <dependency>
                     <groupId>com.mogper</groupId>
                     <artifactId>MogPerContract</artifactId>
@@ -126,6 +122,11 @@
             <artifactId>jmock-junit4</artifactId>
             <version>2.8.2</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.0</version>
         </dependency>
     </dependencies>
 </project>
