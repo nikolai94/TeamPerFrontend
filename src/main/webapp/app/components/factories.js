@@ -28,7 +28,34 @@ angular.module('myAppRename.factories', []).
         return $q.reject(rejection);
       }
     };
-  });
+  }).factory('getAllRouteSummaries', ['$http', function($http)
+    {
+  var url = "http://localhost:8080/TeamPerFrontend-1.0-SNAPSHOT/api/user/getAllRouteSummaries";
+  var dataFactory = {};
+  dataFactory.getData = function()
+  {
+    return $http.get(url);
+  }
+  return dataFactory;}])
+.factory('getDepartures', ['$http', function($http)
+{
+    var url = "http://localhost:8080/TeamPerFrontend-1.0-SNAPSHOT/api/user/getDepartures/";
+    var dataFactory = {};
+    dataFactory.getData = function(routeId, travellingDate)
+    {
+        return $http.get(url+routeId+"/"+travellingDate);
+    }
+    return dataFactory;}])
+    .factory('getDeparture', ['$http', function($http)
+    {
+        var url = "http://localhost:8080/TeamPerFrontend-1.0-SNAPSHOT/api/user/getDeparture/";
+        var dataFactory = {};
+        dataFactory.getData = function(depatureId)
+        {
+            return $http.get(url+depatureId);
+        }
+        return dataFactory;}]);
+
 
 
 ;

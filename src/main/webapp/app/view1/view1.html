@@ -1,14 +1,15 @@
 <div ng-controller="View1Ctrl">
 
   <h2  style="margin-top: 10%;">Browse departures</h2>
+    <p style="color:red;">{{noDepaturesFound}}</p>
   <table class="table table-striped">
 
 
     <thead>
     <tr>
-        <td><select class="form-control"><option>Havn1 - Havn2</option></select></td>
-        <td><input type="date" class="form-control"></td>
-        <td><input type="submit" class="btn-success" value="Search"></td>
+        <td><select class="form-control" ng-model="route.route"><option ng-repeat="row in routes">{{row.harbourOrigin}} - {{row.harbourDestination}}</option></select></td>
+        <td><input type="date" class="form-control" ng-model="route.travellingDate"></td>
+        <td><input type="submit" class="btn-success" value="Search" ng-click="browseDepatures()"></td>
     </tr>
         <tr>
           <th>Fra/til</th>
@@ -18,10 +19,10 @@
     </thead>
     <tbody>
     <tr ng-repeat="row in departures">
-        <td>{{row.from}}/{{row.to}}</td>
-        <td>{{row.date}}  </td>
-        <td>{{row.time}}</td>
-        <td><a href="#/reservation/{{row.id}}">Vælg</a></td>
+        <td>{{row.routeSummary.harbourOrigin}}/{{row.routeSummary.harbourDestination}}</td>
+        <td>{{row.departureTime.date.day}}-{{row.departureTime.date.month}}-{{row.departureTime.date.year}}</td>
+        <td>{{row.departureTime.time.hour}}:{{row.departureTime.time.minute}}</td>
+        <td><a href="#/reservation/{{row.departureId}}">Vælg</a></td>
       </tr>
     </tbody>
   </table>

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myAppRename.view1', ['ngRoute'])
+angular.module('myAppRename.View1Ctrl', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/view1', {
@@ -11,26 +11,55 @@ angular.module('myAppRename.view1', ['ngRoute'])
     });
 }])
 
-    .controller('View1Ctrl', ['$scope','$routeParams', '$filter',function ($scope,$routeParams,$filter) {
+    .controller('View1Ctrl', ['$scope','$routeParams','getAllRouteSummaries','getDepartures','getDeparture',function ($scope,$routeParams,getAllRouteSummaries,getDepartures,getDeparture) {
       $scope.departures = [];
-      var departures = [];
-      departures.push({"id": 1,"from": "Havn 1", "to": "havn2", "date": "20-11-2016", "time": "18.04"});
-      departures.push({"id": 2,"from": "Havn 3", "to": "havn4", "date": "20-11-2016", "time": "18.04"});
-      departures.push({"id": 3,"from": "Havn 5", "to": "havn6", "date": "20-11-2016", "time": "18.04"});
-      departures.push({"id": 4,"from": "Havn 7", "to": "havn8", "date": "20-11-2016", "time": "18.04"});
-      $scope.departures = departures;
+        $scope.routes = [];
+        getAllRouteSummaries.getData().success(function(data){
+            $scope.routes = data;
+        });
 
-       // $filter('searchDepature')("tis","mis");
+        $scope.browseDepatures = function() {
+            console.log($scope.route.travellingDate);
+            var str;
+            var routeId = -1;
+            for (var i = 0; i < $scope.routes.length; i++) {
+                console.log($scope.routes[i]);
+                str = $scope.routes[i].harbourOrigin += " - " + $scope.routes[i].harbourDestination;
+
+                if (str == $scope.route.route) {
+                    routeId = $scope.routes[i].routeId;
+                }
+            }
+            if (routeId != -1) {
+                console.log("leder efter departues");
+                    getDepartures.getData(routeId, $scope.route.travellingDate).success(function (data) {
+                    if(data.length < 1){
+                        $scope.noDepaturesFound ="No departures found";
+                    }
+                    else {
+                        $scope.noDepaturesFound ="";
+                        $scope.departures = data;
+                    }
+                    }).error(function (errormsg) {
+                        console.log(errormsg);
+                        $scope.noDepaturesFound ="Something went Wrong";
+                    })
+                }
+            }
+
+
+
+
+
 // reservation page
         var depatureId = $routeParams.id;
-      //  console.log("depatureId :"+depatureId);
-        for(var i =0; i< $scope.departures.length; i++){
-          //  console.log("$scope.departures[i].id ;"+$scope.departures[i].id);
-            if($scope.departures[i].id == depatureId    )
-            {
-                $scope.selectedDepature = $scope.departures[i];
-                break;
-            }
+        if(depatureId != undefined )
+        {
+            getDeparture.getData(depatureId).success(function(data){
+                $scope.selectedDepature = data;
+            }).error(function(error){
+                console.log(error);
+            })
         }
 //reservation page done
     }]);
