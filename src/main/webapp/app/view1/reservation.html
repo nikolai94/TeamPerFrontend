@@ -2,9 +2,9 @@
 
     <h2  style="margin-top: 10%;">Make reservation</h2>
     <table class="table">
-        <tr><th>Afgang</th><td>{{selectedDepature.from}}-{{selectedDepature.to}}</td></tr>
-        <tr><th>Dato</th><td>{{selectedDepature.date}}</td></tr>
-        <tr><th>Tid</th><td>{{selectedDepature.time}}</td></tr>
+        <tr><th>Afgang</th><td>{{selectedDepature.routeSummary.harbourOrigin}}-{{selectedDepature.routeSummary.harbourDestination}}</td></tr>
+        <tr><th>Dato</th><td>{{selectedDepature.departureTime.date.day}}-{{selectedDepature.departureTime.date.month}}-{{selectedDepature.departureTime.date.year}}</td></tr>
+        <tr><th>Tid</th><td>{{selectedDepature.departureTime.time.hour}}:{{selectedDepature.departureTime.time.minute}}</td></tr>
         <tr><th>Antal Passagerer</th><td><input type="text"></td></tr>
         <tr><td><button>Reserver</button></td></tr>
     </table>

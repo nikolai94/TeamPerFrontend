@@ -29,14 +29,15 @@ angular.module('myAppRename.controllers', []).
 
     $scope.submit = function () {
       $http
-        .post('/authenticate', $scope.user)
+        .post('http://localhost:8080/TeamPerFrontend-1.0-SNAPSHOT/api/admin/login', $scope.user)
         .success(function (data, status, headers, config) {
+          console.log("du er logget ind");
           $window.sessionStorage.token = data.token;
           $scope.isAuthenticated = true;
-          var encodedProfile = data.token.split('.')[1];
-          var profile = JSON.parse(url_base64_decode(encodedProfile));
-          $scope.username = profile.username;
-          $scope.isAdmin = profile.role == "admin";
+          //  var encodedProfile = data.token.split('.')[1];
+         // var profile = JSON.parse(url_base64_decode(encodedProfile));
+          $scope.username = data.username;
+          $scope.isAdmin = true;
           $scope.isUser = !$scope.isAdmin;
           $scope.error = null;
         })
@@ -44,7 +45,7 @@ angular.module('myAppRename.controllers', []).
           // Erase the token if the user fails to log in
           delete $window.sessionStorage.token;
           $scope.isAuthenticated = false;
-
+          console.log('You failed to login. Invalid User or Password');
           $scope.error = 'You failed to login. Invalid User or Password';
         });
     };
