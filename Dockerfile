@@ -1,5 +1,5 @@
-FROM mogpeter/glassfish-cph
-MAINTAINER Egebak
+FROM eguahlak/glassfish-cph
+MAINTAINER AKA
 
 COPY ./target/*.war /opt/glassfish4/glassfish/domains/domain1/autodeploy/mog-frontend.war
 
