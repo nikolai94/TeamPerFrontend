@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>dk.cphbusiness</groupId>
     <artifactId>TeamPerFrontend</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
-
     <name>TeamPerFrontend</name>
-
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    
-
-
     <build>
         <plugins>
             <plugin>
@@ -84,21 +78,18 @@
             </plugin>
         </plugins>
     </build>
-    <distributionManagement>
+    <repositories>
         <repository>
             <id>artifactory</id>
             <name>artifactory-releases</name>
             <url>https://artifactory-webzite.rhcloud.com/artifactory/libs-release-local</url>
         </repository>
-    </distributionManagement>
-    <repositories>
         <repository>
             <id>MogPerContract</id>
             <name>MogPer Repo</name>
             <url>https://artifactory-webzite.rhcloud.com/artifactory/libs-snapshot-local</url>
         </repository>
     </repositories>
-
     <dependencies>
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -117,7 +108,6 @@
             <version>7.0</version>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>com.mogper</groupId>
             <artifactId>MogPerContract</artifactId>
@@ -127,7 +117,7 @@
             <groupId>com.mogper</groupId>
             <artifactId>MogPerContract</artifactId>
             <version>1.0-20161210.073727-4</version>
-            <classifier>tests</classifier>
+            <scope>test</scope>
             <type>test-jar</type>
         </dependency>
         <dependency>
@@ -135,13 +125,6 @@
             <artifactId>TeamPerBackendDummy</artifactId>
             <version>1.0-20161210.112556-6</version>
         </dependency>
-        <!--        <dependency>
-                    <groupId>com.mogper</groupId>
-                    <artifactId>MogPerContract</artifactId>
-                    <version>1.0-20161026.132927-3</version>
-                    <classifier>tests</classifier>
-                </dependency>
-        -->
         <dependency>
             <groupId>org.jmock</groupId>
             <artifactId>jmock-junit4</artifactId>
